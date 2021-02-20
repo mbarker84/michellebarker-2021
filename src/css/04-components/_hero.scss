@@ -1,0 +1,102 @@
+.c-hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--accent);
+  padding: 4rem 0 5rem;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $md) {
+    padding: 10rem 0;
+    font-size: 1.6rem;
+  }
+}
+
+.c-hero__heading {
+  color: var(--accent);
+  letter-spacing: 0.01em;
+
+  @supports (-webkit-text-stroke-width: 1px) {
+    color: var(--bg);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--accent);
+  }
+
+  @media (min-width: $lg) {
+    font-size: 6rem;
+  }
+}
+
+.c-hero__desc {
+  max-width: 50ch;
+  margin: 0 auto;
+
+  @media (min-width: $md) {
+    font-size: 1.4rem;
+  }
+}
+
+.c-hero__link-wrapper {
+  max-width: 20rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: $md) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.c-hero__link {
+  color: var(--accent);
+  margin-top: var(--vr);
+
+  &:hover,
+  &:focus {
+    text-decoration-style: wavy;
+  }
+}
+
+.c-hero__link--github {
+  display: inline-flex;
+  align-items: center;
+  font-size: 80%;
+  color: var(--text);
+
+  &:hover,
+  &:focus {
+    text-decoration-style: wavy;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.c-hero--cover {
+  --mask: radial-gradient(
+    circle at var(--cursorX, 50%) var(--cursorY, 50%),
+    black 20%,
+    transparent 0
+  );
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(deeppink, orange), var(--text);
+  color: var(--text);
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+
+  .c-hero__heading {
+    color: var(--text);
+
+    @supports (-webkit-text-stroke-width: 1px) {
+      -webkit-text-stroke-width: 0;
+    }
+  }
+}

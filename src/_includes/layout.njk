@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  {% include "./partials/siteHead.njk" %}
+
+  <body>
+    <div class="hidden">
+      {% include './partials/sprite.svg' %}
+    </div>
+
+    {% if page.url == '/' %}
+      {% set showHomeLink = false %}
+    {% else %}
+      {% set showHomeLink = true %}
+    {% endif %}
+
+    {% include "./partials/header.njk" %}
+
+    <div class="main">
+      {% block content %}{% endblock %}
+    </div>
+
+    {% include "./partials/footer.njk" %}
+    <!--JS-->
+    {% if version.js | length == 0 %}
+      {% set JsVersion = '' %}
+    {% else %}
+      {% set JsVersion = version.js %}
+    {% endif %}
+    <script src="/index{{ JsVersion }}.js"></script>
+  </body>
+</html>

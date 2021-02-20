@@ -1,0 +1,11 @@
+{
+  "title": "Michelle Barker",
+  "url": "https://michellebarker.co.uk",
+  "description": "Personal portfolio site",
+  "author": {
+    "name": "Michelle Barker",
+    "email": "contact@michellebarker.co.uk"
+  },
+  "img": "og-image.jpg",
+  "githubUrl": "https://github.com/mbarker84/eleventy-parcel"
+}
