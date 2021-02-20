@@ -15,7 +15,12 @@
 
 .c-hero__heading {
   color: var(--accent);
-  letter-spacing: 0.01em;
+
+  .char {
+    opacity: 0;
+    transform: translate3d(0, 0.5em, 0);
+    display: inline-block;
+  }
 
   @supports (-webkit-text-stroke-width: 1px) {
     color: var(--bg);
@@ -29,11 +34,14 @@
 }
 
 .c-hero__desc {
-  max-width: 50ch;
-  margin: 0 auto;
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition: opacity 700ms cubic-bezier(0.24, 0.02, 0.32, 1),
+    transform 700ms cubic-bezier(0.24, 0.02, 0.32, 1);
 
-  @media (min-width: $md) {
-    font-size: 1.4rem;
+  &.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -51,52 +59,77 @@
   }
 }
 
-.c-hero__link {
-  color: var(--accent);
-  margin-top: var(--vr);
-
-  &:hover,
-  &:focus {
-    text-decoration-style: wavy;
+.is-complete {
+  .c-hero__heading {
+    .char {
+      --delay: calc(var(--char-index) * 150ms);
+      animation: appear 800ms var(--delay, 0ms) forwards,
+        slide 900ms var(--delay, 0ms) forwards;
+    }
   }
 }
 
-.c-hero__link--github {
-  display: inline-flex;
-  align-items: center;
-  font-size: 80%;
-  color: var(--text);
-
-  &:hover,
-  &:focus {
-    text-decoration-style: wavy;
+@keyframes appear {
+  100% {
+    opacity: 1;
   }
+}
 
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 0.5rem;
+@keyframes slide {
+  100% {
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .c-hero--cover {
+  --circleX: var(--cursorX, 50%);
+  --circleY: var(--cursorY, 50%);
+
+  @media (prefers-reduced-motion: reduce) {
+    --circleX: 50%;
+    --circleY: 50%;
+  }
+
   --mask: radial-gradient(
-    circle at var(--cursorX, 50%) var(--cursorY, 50%),
-    black 20%,
+    circle at var(--circleX, 50%) var(--circleY, 50%),
+    black var(--maskSize, 0%),
     transparent 0
   );
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(deeppink, orange), var(--text);
   color: var(--text);
   -webkit-mask-image: var(--mask);
   mask-image: var(--mask);
 
+  .c-hero__desc {
+    opacity: 1;
+  }
+
   .c-hero__heading {
-    color: var(--text);
+    background: radial-gradient(
+      circle at center,
+      var(--text) 0.11rem,
+      transparent 0
+    );
+    background-clip: text;
+    background-size: 0.4rem 0.4rem;
+    color: transparent;
 
     @supports (-webkit-text-stroke-width: 1px) {
       -webkit-text-stroke-width: 0;
     }
+  }
+}
+
+.no-js {
+  .char {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .c-hero__desc {
+    opacity: 1;
   }
 }

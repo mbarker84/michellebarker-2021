@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "gsap": "^3.6.0",
-    "lodash.throttle": "^4.1.1"
+    "lodash.throttle": "^4.1.1",
+    "splitting": "^1.0.6"
   }
 }
