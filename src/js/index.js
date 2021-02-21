@@ -1,5 +1,5 @@
 import menu from './menu'
-import cursor from './cursor'
+import scroll from './scroll'
 import textAnimation from './textAnimation'
 
 document.onreadystatechange = function () {
@@ -9,5 +9,5 @@ document.onreadystatechange = function () {
 }
 
 menu()
-// cursor()
+scroll()
 textAnimation()

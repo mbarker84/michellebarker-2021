@@ -2,40 +2,47 @@
 
 {% block content %}
   <div class="c-hero" data-hero>
-    <div class="container">
-      <h1 class="c-hero__heading" data-heading>{{ pageTitle }}</h1>
-      <p class="c-hero__desc" data-subtitle>I make websites.</p>
-    </div>
-
-    <div class="c-hero c-hero--cover" aria-hidden="true">
-      <div class="container">
-        <p class="c-hero__heading heading-1">{{ pageTitle }}</p>
-        <p class="c-hero__desc">I make websites.</p>
+    <div class="c-hero__content">
+      <div class="c-hero__wrapper c-hero__wrapper--main">
+        <div class="container">
+          <h1 class="c-hero__heading" data-heading>{{ pageTitle }}</h1>
+          <p class="c-hero__desc" data-subtitle>I make websites.</p>
+        </div>
+      </div>
+      <div class="c-hero__wrapper c-hero__wrapper--cover" aria-hidden="true">
+        <div class="container">
+          <p class="c-hero__heading heading-1">{{ pageTitle }}</p>
+          <p class="c-hero__desc">I make websites.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <section>
-    <div class="container">
-      <h2>About me</h2>
-      <div class="o-richtext">
-        {{ content | safe }}
+  <section class="section section--about" data-section>
+    <div class="c-section__content" data-section-content>
+      <div class="container">
+        <h2>About me</h2>
+        <div class="o-richtext">
+          {{ content | safe }}
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2>Projects</h2>
+  <section class="section section--projects" data-section>
+    <div class="c-section__content" data-section-content>
+      <div class="container">
+        <h2>Projects</h2>
+      </div>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <h2>Get in touch</h2>
+  <section class="section section--projects" data-section>
+    <div class="c-section__content" data-section-content>
+      <div class="container">
+        <h2>Get in touch</h2>
+      </div>
     </div>
   </section>
-
-
 
 {% endblock %}

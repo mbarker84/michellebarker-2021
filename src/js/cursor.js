@@ -30,6 +30,14 @@ const cursor = () => {
     duration: 0.5,
     ease: 'back.out(2)',
   })
+
+  gsap.to(hero, {
+    '--maskSize2': '28%',
+    '--maskSize3': 'calc(28% + 0.1rem)',
+    duration: 0.5,
+    delay: 0.5,
+    ease: 'back.out(2)',
+  })
 }
 
 export default cursor

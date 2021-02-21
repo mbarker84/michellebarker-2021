@@ -1,0 +1,68 @@
+.section {
+  --clip: polygon(100% 0, 100% 100%, 0 100%, 0 6rem);
+
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  @media (min-width: $lg) {
+    padding-bottom: 100vh;
+  }
+}
+
+.section--about {
+  @media (min-width: $lg) {
+    margin-top: calc(100vh + 6rem);
+    -webkit-clip-path: var(--clip);
+    clip-path: var(--clip);
+    background-color: var(--text);
+  }
+}
+
+.section--projects {
+  @media (min-width: $lg) {
+    background-color: var(--bg);
+    -webkit-clip-path: var(--clip);
+    clip-path: var(--clip);
+  }
+}
+
+.c-section__content {
+  --clip: polygon(100% 0, 100% 100%, 0 100%);
+
+  min-height: 100%;
+  background-color: var(--text);
+  color: var(--bg);
+  padding: 2rem 0;
+
+  h2 {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 0.2em;
+  }
+
+  @media (min-width: $md) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: $lg) {
+    &::before {
+      position: absolute;
+      top: -6rem;
+      left: 0;
+      width: 100%;
+      height: 6rem;
+      background-color: var(--text);
+      content: '';
+      -webkit-clip-path: var(--clip);
+      clip-path: var(--clip);
+    }
+  }
+
+  @media (min-width: $lg) and (min-height: 700px) {
+    min-height: 100vh;
+    background: linear-gradient(95deg, var(--accent) 50%, transparent 0);
+  }
+}
