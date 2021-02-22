@@ -15,6 +15,7 @@ $alt: darken($bgDark, 5%);
 
 :root {
   --vr: 1rem;
+  --2vr: calc(var(--vr) * 2);
   --text: #f7f7f7;
   --bg: rgba(9, 14, 23, 1);
   --accent: deeppink;

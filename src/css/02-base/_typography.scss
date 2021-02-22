@@ -4,6 +4,10 @@ body {
   @media (min-width: $md) {
     font-size: 1.2rem;
   }
+
+  @media (min-width: $lg) {
+    font-size: 1.4rem;
+  }
 }
 
 h1,
@@ -14,11 +18,6 @@ h4 {
   font-weight: 900;
   line-height: 1.1;
   margin: 0;
-}
-
-h2,
-h3 {
-  letter-spacing: -0.02em;
 }
 
 h1,
@@ -40,23 +39,18 @@ h2 {
 }
 
 h3 {
-  font-family: 'Lato', sans-serif;
   font-size: 1.1rem;
 
   @media (min-width: $md) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 
 p {
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 65ch;
 }
 
 a {
-  color: lighten($bgDark, 20%);
-
-  &:hover,
-  &:focus {
-    color: $bgDark;
-  }
+  color: inherit;
 }
