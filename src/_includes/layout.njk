@@ -7,13 +7,13 @@
       {% include './partials/sprite.svg' %}
     </div>
 
-    {% if page.url == '/' %}
+    {# {% if page.url == '/' %}
       {% set showHomeLink = false %}
     {% else %}
       {% set showHomeLink = true %}
     {% endif %}
 
-    {% include "./partials/header.njk" %}
+    {% include "./partials/header.njk" %} #}
 
     <div class="main">
       {% block content %}{% endblock %}

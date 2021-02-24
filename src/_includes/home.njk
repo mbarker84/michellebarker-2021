@@ -18,28 +18,25 @@
     </div>
   </div>
 
-  <section class="section section--about" data-section>
-    <div class="c-section__content" data-section-content>
-      <div class="container">
-        <h2 class="c-section__heading" data-heading>About me</h2>
-        <div class="c-section__inner-content o-richtext" data-content>
-          {{ content | safe }}
-        </div>
-        <div>
-          <div class="c-section__shape" data-shape></div>
-          <div class="c-section__shape" data-shape></div>
+  {% for post in collections.section %}
+    <section class="section section--{{ post.fileSlug }}" data-section>
+      <div class="c-section__content" data-section-content>
+        <div class="container">
+          <h2 class="c-section__heading" data-heading>{{ post.data.pageTitle }}</h2>
+          <div class="c-section__inner-content o-richtext" data-content>
+            {{ post.data.content | safe }}
+          </div>
+          {% if post.fileSlug == 'projects' %}
+            {% include "./partials/projects.njk" %}
+          {% endif %}
+          <div>
+            <div class="c-section__shape" data-shape></div>
+            <div class="c-section__shape" data-shape></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--projects" data-section>
-    <div class="c-section__content" data-section-content>
-      <div class="container">
-        <h2 class="c-section__heading" data-heading>Projects</h2>
-      </div>
-    </div>
-  </section>
+    </section>
+  {% endfor %}
 
   <div class="c-divider"></div>
 

@@ -1,43 +1,10 @@
 ---
-pageTitle: 'About'
+pageTitle: 'About me'
+tags: ['post', 'section', 'about']
 ---
 
-A basic [Eleventy (11ty)](https://www.11ty.dev/) starter project with [Parcel JS](https://parceljs.org/).
+My name is Michelle Barker and I’m Lead Front End Developer at [Atomic Smash](https://atomicsmash.co.uk). I like building fun, creative website and side projects that are also performant and accessible.
 
-## Features
+### Writing
 
-- Two initial Nunjucks templates
-- Parcel for JS bundling and Sass compilation
-- Basic Sass architecture to get you started
-- SVG sprite creation
-- Image optimisation
-- Prettier and Stylelint
-- Fly-out menu
-
-## Commands
-
-Clone or download the project from the [Github repository](https://github.com/mbarker84/eleventy-parcel).
-
-### Install dependencies
-
-```
-npm install
-```
-
-### Run
-
-```
-npm start
-```
-
-### Build for production
-
-```
-npm run build
-```
-
-### Generate SVG sprite
-
-```
-npm run svg
-```
+I regularly write about front end topics on my popular blog, [CSS { In Real Life }](https://css-irl.info), and occasionally write guest posts for other publications, including [CSS Tricks](https://css-tricks.com/) and [Smashing Magazine](https://www.smashingmagazine.com/).

@@ -1,0 +1,62 @@
+.c-projects {
+  @media (min-width: $md) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.c-projects__img-wrapper {
+  overflow: hidden;
+  transition: filter 200ms;
+  -webkit-clip-path: var(--clip);
+  clip-path: var(--clip);
+}
+
+.c-projects__fig {
+  --clip: polygon(0 0%, 95% 5%, 100% 100%, 5% 95%);
+
+  position: relative;
+
+  img {
+    transition: transform 800ms;
+  }
+
+  &:hover,
+  &:focus {
+    .c-projects__img-wrapper {
+      filter: grayscale(100%);
+    }
+
+    img {
+      transform: rotate(5deg) scale(1.2);
+    }
+  }
+}
+
+.c-projects__img-wrapper-outer {
+  filter: drop-shadow(0.5rem 0.5rem 0 var(--accent));
+
+  @media (min-width: $md) {
+    filter: drop-shadow(1rem 1rem 0 var(--accent));
+  }
+}
+
+.c-projects__caption {
+  padding-left: 1rem;
+
+  a {
+    text-decoration-color: var(--accent);
+
+    &:hover,
+    &:focus {
+      color: var(--accent);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+  }
+}

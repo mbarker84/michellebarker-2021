@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const sections = [...document.querySelectorAll('[data-section')]
+const hero = document.querySelectorAll('[data-hero]')
 
 const scroll = () => {
   sections.forEach((section, index) => {
@@ -30,6 +31,10 @@ const scroll = () => {
         toggleClass: 'is-inview',
         onEnter: (self) => {
           self.trigger.classList.add('is-inview')
+
+          if (index == 0) {
+            gsap.to(hero, { opacity: 0, duration: 0.8 })
+          }
           console.log('enter')
         },
         onLeave: () => {
@@ -40,6 +45,10 @@ const scroll = () => {
         },
         onLeaveBack: (self) => {
           self.trigger.classList.remove('is-inview')
+
+          if (index == 0) {
+            gsap.to(hero, { opacity: 1, duration: 0.8 })
+          }
           console.log('enter back')
         },
       },
@@ -53,7 +62,7 @@ const scroll = () => {
         duration: 0.7,
         ease: 'back.out(2)',
       },
-      '+=1.3'
+      '+=1.5'
     ).to(shapes[1], {
       scale: 1,
       rotate: -10,

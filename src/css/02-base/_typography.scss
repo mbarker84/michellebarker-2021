@@ -54,3 +54,12 @@ p {
 a {
   color: inherit;
 }
+
+figcaption {
+  font-size: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: $md) {
+    font-size: 1.2rem;
+  }
+}

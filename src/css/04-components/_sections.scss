@@ -10,14 +10,39 @@
 }
 
 .section--about,
-.section--contact {
+.section--projects {
   background-color: var(--text);
   color: var(--bg);
+}
+
+.section--speaking {
+  @media (min-width: $lg) {
+    &::after {
+      --clip: polygon(100% 0, 100% 100%, 0 50%);
+
+      content: '';
+      position: absolute;
+      top: -6rem;
+      left: 0;
+      width: 100%;
+      height: 12rem;
+      -webkit-clip-path: var(--clip);
+      clip-path: var(--clip);
+      background-color: var(--text);
+      z-index: 2;
+    }
+  }
 }
 
 .section--about {
   @media (min-width: $lg) {
     margin-top: calc(100vh + 6rem);
+  }
+}
+
+.section--about,
+.section--projects {
+  @media (min-width: $lg) {
     -webkit-clip-path: var(--clip);
     clip-path: var(--clip);
   }
@@ -111,6 +136,55 @@
     bottom: calc(var(--size) / -4);
     left: calc(var(--size) / -6);
     transform: rotate(25deg);
+  }
+}
+
+.section--speaking {
+  .c-section__shape {
+    border-radius: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--accent),
+      var(--accent) 0.1rem,
+      transparent 0,
+      transparent 0.5rem
+    );
+
+    &:first-child {
+      top: 60vh;
+    }
+
+    &:nth-child(2) {
+      left: calc(var(--size) / -2);
+      top: calc(var(--size) / -2);
+    }
+  }
+}
+
+.section--projects {
+  .c-section__shape {
+    --clip: polygon(50% 0, 75% 50%, 50% 100%, 25% 50%);
+
+    background: repeating-linear-gradient(
+        0deg,
+        var(--accent),
+        var(--accent) 0.1rem,
+        transparent 0,
+        transparent 0.6rem
+      ),
+      repeating-linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent) 0.1rem,
+        transparent 0,
+        transparent 0.6rem
+      );
+    -webkit-clip-path: var(--clip);
+    clip-path: var(--clip);
+
+    &:first-child {
+      transform: rotate(60deg);
+    }
   }
 }
 
