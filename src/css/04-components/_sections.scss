@@ -3,10 +3,13 @@
 
   position: relative;
   z-index: 1;
-  min-height: 100vh;
   overflow: hidden;
   color: var(--text);
   background-color: var(--bg);
+
+  @media (min-width: $lg) {
+    min-height: 100vh;
+  }
 }
 
 .section--about,
@@ -214,6 +217,8 @@
 
 .no-js {
   .section {
+    min-height: auto;
+
     @media (min-width: $lg) {
       min-height: 100vh;
     }

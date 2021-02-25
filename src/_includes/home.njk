@@ -19,13 +19,16 @@
   </div>
 
   {% for post in collections.section %}
-    <section class="section section--{{ post.fileSlug }}" data-section>
+    <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
       <div class="c-section__content" data-section-content>
         <div class="container">
           <h2 class="c-section__heading" data-heading>{{ post.data.pageTitle }}</h2>
           <div class="c-section__inner-content o-richtext" data-content>
             {{ post.data.content | safe }}
           </div>
+          {% for project in post.data.projects %}
+            {{ project }}
+          {% endfor %}
           {% if post.fileSlug == 'projects' %}
             {% include "./partials/projects.njk" %}
           {% endif %}

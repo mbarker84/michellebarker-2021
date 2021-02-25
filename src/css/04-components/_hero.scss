@@ -124,17 +124,21 @@
   }
 
   .c-hero__heading {
-    background: radial-gradient(
-      circle at center,
-      var(--text) 0.11rem,
-      transparent 0
-    );
-    background-clip: text;
-    background-size: 0.4rem 0.4rem;
-    color: transparent;
+    color: var(--text);
 
     @supports (-webkit-text-stroke-width: 1px) {
       -webkit-text-stroke-width: 0;
+    }
+
+    @media (min-width: $md) {
+      background: radial-gradient(
+        circle at center,
+        var(--text) 0.11rem,
+        transparent 0
+      );
+      background-clip: text;
+      background-size: 0.4rem 0.4rem;
+      color: transparent;
     }
   }
 }

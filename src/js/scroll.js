@@ -1,6 +1,7 @@
 import Splitting from 'splitting'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { minDesktop } from './helpers/media'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,7 +27,7 @@ const scroll = () => {
         trigger: section,
         start: 'top top',
         endTrigger: nextSection || false,
-        pin: true,
+        pin: minDesktop(),
         toggleActions: 'play pause resume reverse',
         toggleClass: 'is-inview',
         onEnter: (self) => {

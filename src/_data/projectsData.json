@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Intersection Observer Visualiser",
+    "url": "https://github.com/mbarker84/eleventy-parcel",
+    "image": {
+      "src": "/project-io-viz.jpg"
+    }
+  },
+  {
+    "title": "Compound Grid Generator",
+    "url": "https://twitter.com/MicheBarks",
+    "image": {
+      "src": "/project-compound-grid.jpg"
+    }
+  }
+]
