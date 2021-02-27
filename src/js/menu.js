@@ -49,6 +49,17 @@ const trapFocusInMenu = (e) => {
   }
 }
 
+const handleClick = (e) => {
+  const id = e.target.getAttribute('href')
+
+  if (id) {
+    const section = document.querySelector(id)
+    close()
+    section.parentElement.classList.add('is-inview')
+    console.log(section)
+  }
+}
+
 const menu = () => {
   menuBtn.hidden = false
   menuWrapper.hidden = true
@@ -56,7 +67,7 @@ const menu = () => {
   menuWrapper.classList.add('js-menu')
   menuBtn.addEventListener('click', toggleMenu)
   menuWrapper.addEventListener('keydown', trapFocusInMenu)
-  menuWrapper.addEventListener('click', close)
+  menuWrapper.addEventListener('click', handleClick)
 }
 
 export default menu

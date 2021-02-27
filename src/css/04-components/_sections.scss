@@ -74,6 +74,7 @@
 .c-section__content {
   min-height: 100%;
   padding: 2rem 0;
+  // scroll-margin-top: -3rem;
 
   @media (min-width: $md) {
     padding: 6rem 0;
@@ -85,8 +86,6 @@
 }
 
 .c-section__heading {
-  scroll-margin-top: var(--2vr);
-
   .char {
     @media (min-width: $md) and (prefers-reduced-motion: no-preference) {
       --d: calc(var(--char-index) * 100ms);
@@ -100,7 +99,6 @@
 
   @media (min-width: $lg) {
     margin-bottom: var(--2vr);
-    scroll-margin-top: var(--2vr);
   }
 }
 
