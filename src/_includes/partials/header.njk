@@ -16,13 +16,13 @@
           <a class="c-header__link" href="/" hidden="true" data-home-link="data-home-link">Home</a>
         </li>
 
-        {% for page in collections.page %}
+        {% for post in collections.section %}
           <li class="c-header__item">
-            <a class="c-header__link" href="{{ page.url }}">{{ page.data.pageTitle }}</a>
+            <a class="c-header__link" href="#{{ post.fileSlug }}">{{ post.data.pageTitle }}</a>
           </li>
         {% endfor %}
 
-        {% for item in menudata %}
+        {# {% for item in menudata %}
           <li class="c-header__item">
             <a class="c-header__link" href="{{ item.url }}">
               {{ item.title }}
@@ -31,7 +31,7 @@
               </svg>
             </a>
           </li>
-        {% endfor %}
+        {% endfor %} #}
 
       </ul>
     </nav>

@@ -85,6 +85,8 @@
 }
 
 .c-section__heading {
+  scroll-margin-top: var(--2vr);
+
   .char {
     @media (min-width: $md) and (prefers-reduced-motion: no-preference) {
       --d: calc(var(--char-index) * 100ms);
@@ -98,6 +100,7 @@
 
   @media (min-width: $lg) {
     margin-bottom: var(--2vr);
+    scroll-margin-top: var(--2vr);
   }
 }
 

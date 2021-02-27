@@ -1,3 +1,4 @@
+import gsap from 'gsap'
 import { trapFocus, visibleLinks } from './helpers/trapFocus'
 import bodyScrollLock from './helpers/bodyScrollLock'
 
@@ -13,7 +14,7 @@ const open = () => {
   menuBtn.setAttribute('aria-expanded', true)
   menuBtn.innerText = 'Close'
   firstMenuLink.focus()
-  bodyScrollLock(true)
+  // bodyScrollLock(true)
 
   setTimeout(() => {
     menuWrapper.classList.add('is-visible')
@@ -27,7 +28,7 @@ const close = () => {
     menuWrapper.hidden = true
     menuBtn.setAttribute('aria-expanded', false)
     menuBtn.innerText = 'Menu'
-    bodyScrollLock(false)
+    // bodyScrollLock(false)
   }, 250)
 }
 
@@ -55,6 +56,7 @@ const menu = () => {
   menuWrapper.classList.add('js-menu')
   menuBtn.addEventListener('click', toggleMenu)
   menuWrapper.addEventListener('keydown', trapFocusInMenu)
+  menuWrapper.addEventListener('click', close)
 }
 
 export default menu

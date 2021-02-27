@@ -1,4 +1,4 @@
-// import menu from './menu'
+import menu from './menu'
 import scroll from './scroll'
 import textAnimation from './textAnimation'
 
@@ -8,6 +8,6 @@ document.onreadystatechange = function () {
   }
 }
 
-// menu()
+menu()
 scroll()
 textAnimation()
