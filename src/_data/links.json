@@ -8,5 +8,10 @@
     "title": "Twitter",
     "icon": "twitter",
     "url": "https://twitter.com/MicheBarks"
+  },
+  {
+    "title": "Codepen",
+    "icon": "codepen",
+    "url": "https://codepen.io/michellebarker"
   }
 ]

@@ -26,7 +26,7 @@
   appearance: none;
   border: none;
   background-color: transparent;
-  color: $lightGrey;
+  color: var(--accent);
   transition: color 200ms;
   text-decoration: underline;
   font-family: inherit;

@@ -74,7 +74,6 @@
 .c-section__content {
   min-height: 100%;
   padding: 2rem 0;
-  // scroll-margin-top: -3rem;
 
   @media (min-width: $md) {
     padding: 6rem 0;
@@ -86,6 +85,9 @@
 }
 
 .c-section__heading {
+  position: relative;
+  display: inline-block;
+
   .char {
     @media (min-width: $md) and (prefers-reduced-motion: no-preference) {
       --d: calc(var(--char-index) * 100ms);
@@ -97,7 +99,19 @@
     }
   }
 
-  @media (min-width: $lg) {
+  svg {
+    width: auto;
+    height: 1rem;
+    position: absolute;
+    bottom: -0.75em;
+    left: 0;
+    stroke: var(--accent);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 2000ms 500ms;
+  }
+
+  @media (min-width: $md) {
     margin-bottom: var(--2vr);
   }
 }
@@ -203,6 +217,10 @@
         transform: translate3d(0, 0, 0);
         transition: opacity 400ms var(--d), transform 400ms var(--d);
       }
+    }
+
+    svg {
+      stroke-dashoffset: 0;
     }
   }
 

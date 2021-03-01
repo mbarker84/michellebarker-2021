@@ -4,6 +4,16 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  @media (min-width: $lg) {
+    display: flex;
+  }
+}
+
+.c-projects__item {
+  @media (min-width: $lg) {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
 }
 
 .c-projects__img-wrapper {

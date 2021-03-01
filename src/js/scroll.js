@@ -7,12 +7,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 const sections = [...document.querySelectorAll('[data-section')]
 const hero = document.querySelectorAll('[data-hero]')
+const projectsWrapper = document.querySelector('[data-projects-wrapper]')
+const containerWidth = document.querySelector('.container').clientWidth
+
+const shouldPinSection = (isProjectSection) => {
+  return minDesktop() && isProjectSection
+}
 
 const scroll = () => {
+  gsap.set(projectsWrapper, {
+    x: window.innerWidth / 2 - containerWidth / 2,
+  })
+
   sections.forEach((section, index) => {
     const nextSection = sections[index + 1]
     const heading = section.querySelector('[data-heading]')
     const shapes = [...section.querySelectorAll('[data-shape]')]
+    const isProjectSection = section.dataset.section === 'projects'
 
     const splitText = new Splitting({
       target: heading,
@@ -25,11 +36,12 @@ const scroll = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
+        start: isProjectSection ? 'top top' : 'top center',
         endTrigger: nextSection || false,
-        pin: minDesktop(),
+        pin: shouldPinSection(isProjectSection),
         toggleActions: 'play pause resume reverse',
         toggleClass: 'is-inview',
+        scrub: isProjectSection ? 1 : false,
         onEnter: (self) => {
           self.trigger.classList.add('is-inview')
 
@@ -70,6 +82,22 @@ const scroll = () => {
       duration: 0.7,
       ease: 'back.out(2)',
     })
+
+    const distanceFromEnd =
+      (projectsWrapper.clientWidth +
+        (window.innerWidth / 2 - containerWidth / 2)) *
+      -1
+
+    /* Projects */
+    if (isProjectSection) {
+      tl.to(
+        projectsWrapper,
+        {
+          x: distanceFromEnd,
+        },
+        0.5
+      )
+    }
   })
 }
 

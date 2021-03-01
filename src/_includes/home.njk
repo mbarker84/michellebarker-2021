@@ -22,20 +22,24 @@
     <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
       <div class="c-section__content" data-section-content id="{{ post.fileSlug }}">
         <div class="container">
-          <h2 class="c-section__heading" data-heading="{{ loop.index }}">{{ post.data.pageTitle }}</h2>
+          <h2 class="c-section__heading" data-heading="{{ loop.index }}">
+            {{ post.data.pageTitle }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="4" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
+          </h2>
           <div class="c-section__inner-content o-richtext" data-content>
             {{ post.data.content | safe }}
           </div>
-          {% for project in post.data.projects %}
-            {{ project }}
-          {% endfor %}
-          {% if post.fileSlug == 'projects' %}
+        </div>
+
+        {% if post.fileSlug == 'projects' %}
+          <div data-projects-wrapper>
             {% include "./partials/projects.njk" %}
-          {% endif %}
-          <div>
-            <div class="c-section__shape" data-shape></div>
-            <div class="c-section__shape" data-shape></div>
           </div>
+        {% endif %}
+
+        <div>
+          <div class="c-section__shape" data-shape></div>
+          <div class="c-section__shape" data-shape></div>
         </div>
       </div>
     </section>
@@ -47,6 +51,17 @@
     <div class="c-section__content" data-section-content>
       <div class="container">
         <h2 class="c-section__heading" data-heading>Get in touch</h2>
+        <div class="c-section__inner-content o-richtext" data-content>
+          <p>Find me in these places:</p>
+          <ul>
+            {% for link in links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          <p>Or email me at <a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
+        </div>
       </div>
     </div>
   </section>
