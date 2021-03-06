@@ -12,7 +12,7 @@
 
 .c-projects__item {
   @media (min-width: $lg) {
-    flex: 0 0 calc(50% - 0.5rem);
+    flex: 0 0 min(50vh, calc(50% - 0.5rem));
   }
 }
 

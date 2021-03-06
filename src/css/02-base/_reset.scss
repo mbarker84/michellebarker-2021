@@ -27,3 +27,19 @@ svg {
 figure {
   margin: 0;
 }
+
+*:focus,
+button:focus {
+  outline: none;
+}
+
+*:focus-visible,
+button:focus-visible {
+  outline: 2px dashed var(--accent);
+}
+
+.js-focus-visible {
+  *:focus:not(.focus-visible) {
+    outline: none;
+  }
+}

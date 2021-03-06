@@ -8,26 +8,25 @@ const menuWrapper = header.querySelector('[data-menu-wrapper]')
 const homeLink = header.querySelector('[data-home-link]')
 
 const open = () => {
-  const firstMenuLink = visibleLinks(menuWrapper)[0]
-
   menuWrapper.hidden = false
   menuBtn.setAttribute('aria-expanded', true)
-  menuBtn.innerText = 'Close'
-  firstMenuLink.focus()
+  menuBtn.setAttribute('aria-label', 'Close')
   // bodyScrollLock(true)
 
   setTimeout(() => {
     menuWrapper.classList.add('is-visible')
+    document.body.classList.add('is-menu-visible')
   }, 10)
 }
 
 const close = () => {
   menuWrapper.classList.remove('is-visible')
+  document.body.classList.remove('is-menu-visible')
 
   setTimeout(() => {
     menuWrapper.hidden = true
     menuBtn.setAttribute('aria-expanded', false)
-    menuBtn.innerText = 'Menu'
+    menuBtn.setAttribute('aria-label', 'Menu')
     // bodyScrollLock(false)
   }, 250)
 }
@@ -56,7 +55,6 @@ const handleClick = (e) => {
     const section = document.querySelector(id)
     close()
     section.parentElement.classList.add('is-inview')
-    console.log(section)
   }
 }
 
