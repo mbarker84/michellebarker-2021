@@ -30,7 +30,7 @@ const initializeSectionsTL = () => {
     })
 
     gsap.set(section, {
-      minHeight: window.innerHeight * 2,
+      minHeight: window.innerHeight * 1.25,
     })
 
     const tl = gsap.timeline({
@@ -48,7 +48,6 @@ const initializeSectionsTL = () => {
           if (index == 0) {
             gsap.to(hero, { opacity: 0, duration: 0.8 })
           }
-          console.log('enter')
         },
         onLeaveBack: (self) => {
           self.trigger.classList.remove('is-inview')
@@ -90,19 +89,48 @@ const initializeSectionsTL = () => {
 }
 
 const initializeContentTL = () => {
+  const aboutSection = sections.find((el) => el.dataset.section === 'about')
+  const aboutImgWrapper = aboutSection.querySelector('[data-img-wrapper]')
+
+  if (minDesktop()) {
+    gsap.set(aboutImgWrapper, {
+      y: 600,
+      rotation: -5,
+    })
+  }
+
   /* Text content */
   sectionContentAreas.forEach((el, index) => {
-    const top = getComputedStyle(el.parentElement).paddingTop
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start: `top ${top}`,
-        endTrigger: sections[index + 1] ? sections[index + 1] : null,
-        pin: true,
-        toggleActions: 'play pause resume reverse',
-        toggleClass: 'should-show-text',
-      },
-    })
+    const parentSection = el.closest('.c-section__content')
+    const top = getComputedStyle(parentSection).paddingTop
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: `top ${top}`,
+          endTrigger: sections[index + 1] ? sections[index + 1] : null,
+          pin: minDesktop(),
+          toggleActions: 'play pause resume reverse',
+          toggleClass: 'should-show-text',
+        },
+      })
+      .to(aboutImgWrapper, {
+        rotation: 5,
+        duration: 2,
+      })
+      .to(aboutImgWrapper, {
+        rotation: -2,
+        duration: 2,
+      })
+      .to(
+        aboutImgWrapper,
+        {
+          y: 200,
+          duration: 6,
+          ease: 'elastic.out(1, 0.3)',
+        },
+        0
+      )
   })
 }
 

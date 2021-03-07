@@ -16,7 +16,7 @@ const open = () => {
   setTimeout(() => {
     menuWrapper.classList.add('is-visible')
     document.body.classList.add('is-menu-visible')
-  }, 10)
+  }, 50)
 }
 
 const close = () => {

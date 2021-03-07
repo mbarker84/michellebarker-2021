@@ -15,10 +15,6 @@
   }
 }
 
-.c-header--bg {
-  background-color: $bgDark;
-}
-
 .c-header__menu-btn {
   position: absolute;
   top: 0;
@@ -190,9 +186,8 @@
     padding: 5rem 1rem 2rem 1rem;
     overflow-y: scroll;
     background-color: var(--bg);
-    opacity: 0;
-    transform: translate3d(0, 3rem, 0);
-    transition: transform 650ms, opacity 650ms;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 400ms;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
 

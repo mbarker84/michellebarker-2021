@@ -19,30 +19,34 @@
   </div>
 
   {% for post in collections.section %}
-    <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
-      <div class="c-section__content" data-section-content id="{{ post.fileSlug }}">
-        <div class="container">
-          <h2 class="c-section__heading" data-heading="{{ loop.index }}">
-            {{ post.data.pageTitle }}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="4" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
-          </h2>
-          <div class="c-section__inner-content o-richtext" data-content>
-            {{ post.data.content | safe }}
+    {% if post.fileSlug == 'about' %}
+      {% include "./partials/section-about.njk" %}
+    {% else %}
+      <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
+        <div class="c-section__content" data-section-content id="{{ post.fileSlug }}">
+          <div class="container">
+            <h2 class="c-section__heading" data-heading="{{ loop.index }}">
+              {{ post.data.pageTitle }}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="5" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
+            </h2>
+            <div class="c-section__inner-content o-richtext" data-content>
+              {{ post.data.content | safe }}
+            </div>
+          </div>
+
+          {% if post.fileSlug == 'projects' %}
+            <div data-projects-wrapper>
+              {% include "./partials/projects.njk" %}
+            </div>
+          {% endif %}
+
+          <div>
+            <div class="c-section__shape" data-shape></div>
+            <div class="c-section__shape" data-shape></div>
           </div>
         </div>
-
-        {% if post.fileSlug == 'projects' %}
-          <div data-projects-wrapper>
-            {% include "./partials/projects.njk" %}
-          </div>
-        {% endif %}
-
-        <div>
-          <div class="c-section__shape" data-shape></div>
-          <div class="c-section__shape" data-shape></div>
-        </div>
-      </div>
-    </section>
+      </section>
+    {% endif %}
   {% endfor %}
 
   <div class="c-divider"></div>
