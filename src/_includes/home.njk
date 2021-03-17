@@ -18,14 +18,14 @@
     </div>
   </div>
 
-  {% for post in collections.section %}
+  {% for post in collections.sortedSections %}
     {% if post.fileSlug == 'about' %}
       {% include "./partials/section-about.njk" %}
     {% elseif post.fileSlug == 'contact' %}
       {% include "./partials/section-contact.njk" %}
     {% else %}
       <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
-        <div class="c-section__content" data-section-content >
+        <div class="c-section__content" data-section-content>
           <div class="container">
             <h2 class="c-section__heading" data-heading="{{ loop.index }}" id="{{ post.fileSlug }}">
               {{ post.data.pageTitle }}
@@ -34,11 +34,6 @@
             <div class="c-section__inner-content o-richtext" data-content>
               {{ post.data.content | safe }}
             </div>
-          </div>
-
-          <div>
-            <div class="c-section__shape" data-shape></div>
-            <div class="c-section__shape" data-shape></div>
           </div>
         </div>
       </section>

@@ -18,20 +18,21 @@ const initializeSectionsTL = () => {
   sections.forEach((section, index) => {
     const nextSection = sections[index + 1]
     const heading = section.querySelector('[data-heading]')
-    const shapes = [...section.querySelectorAll('[data-shape]')]
     const isProjectSection = section.dataset.section === 'projects'
 
     const splitText = new Splitting({
       target: heading,
     })
 
-    gsap.set(shapes, {
-      scale: 0,
-    })
-
     if (minTablet()) {
       gsap.set(section, {
         minHeight: window.innerHeight * 1.25,
+      })
+    }
+
+    if (index === 0) {
+      gsap.set(section, {
+        backgroundColor: 'rgba(255, 20, 147, 1)',
       })
     }
 
@@ -43,7 +44,6 @@ const initializeSectionsTL = () => {
         pin: false,
         toggleActions: 'play pause resume reverse',
         toggleClass: 'is-inview',
-        scrub: isProjectSection ? 1 : false,
         onEnter: (self) => {
           self.trigger.classList.add('is-inview')
 
@@ -61,32 +61,32 @@ const initializeSectionsTL = () => {
       },
     })
 
-    tl.to(
-      shapes[0],
-      {
-        scale: 1,
-        rotate: 10,
-        duration: 0.7,
-        ease: 'back.out(2)',
-      },
-      '+=1.5'
-    ).to(shapes[1], {
-      scale: 1,
-      rotate: -10,
-      duration: 0.7,
-      ease: 'back.out(2)',
-    })
-
-    /* Projects */
-    if (isProjectSection) {
-      tl.to(
-        projectsWrapper,
-        {
-          x: '-100%',
-        },
-        0.5
-      )
+    if (index === 0) {
+      tl.to(section, {
+        backgroundColor: 'rgba(9, 14, 23, 1)',
+        duration: 0.4,
+      })
     }
+    // tl.to(section, {
+    //   backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg'),
+    //   duration: 1.2,
+    // })
+
+    // tl.to(
+    //   shapes[0],
+    //   {
+    //     scale: 1,
+    //     rotate: 10,
+    //     duration: 0.7,
+    //     ease: 'back.out(2)',
+    //   },
+    //   '+=1.5'
+    // ).to(shapes[1], {
+    //   scale: 1,
+    //   rotate: -10,
+    //   duration: 0.7,
+    //   ease: 'back.out(2)',
+    // })
   })
 }
 

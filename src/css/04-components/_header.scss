@@ -187,8 +187,7 @@
     height: 100vh;
     padding: 5rem 1rem 2rem 1rem;
     overflow-y: scroll;
-    // background-color: var(--bg);
-    background-color: var(--accent);
+    background-color: deeppink;
     clip-path: circle(0% at calc(100% - 2rem) 2rem);
     transition: opacity 200ms, clip-path 500ms;
     font-family: 'Montserrat', sans-serif;

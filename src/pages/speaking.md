@@ -1,5 +1,6 @@
 ---
 pageTitle: 'Speaking'
+order: 2
 tags: ['post', 'section', 'speaking']
 ---
 

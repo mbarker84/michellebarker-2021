@@ -3,9 +3,9 @@
 <section class="section section--contact" data-section>
   <div class="c-section__content" data-section-content>
     <div class="container">
-      <h2 class="c-section__heading" data-heading id="contact">Get in touch</h2>
+      <h2 class="c-section__heading" data-heading id="contact">{{ post.data.pageTitle }}</h2>
       <div class="c-section__inner-content o-richtext" data-content>
-        <p>Find me in these places:</p>
+        {{ post.data.content | safe }}
         <ul>
           {% for link in links %}
             <li>

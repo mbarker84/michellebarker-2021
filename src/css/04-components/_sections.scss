@@ -1,6 +1,4 @@
 .section {
-  --clip: polygon(100% 0, 100% 100%, 0 100%, 0 6rem);
-
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -9,46 +7,36 @@
 
   @media (min-width: $lg) {
     min-height: 100vh;
-    scroll-margin-top: -50px;
   }
-}
 
-.section--about,
-.section--projects {
-  background-color: var(--text);
-  color: var(--bg);
-}
-
-.section--speaking {
-  @media (min-width: $lg) {
-    &::after {
-      --clip: polygon(100% 0, 100% 100%, 0 50%);
-
-      content: '';
-      position: absolute;
-      top: -6rem;
-      left: 0;
-      width: 100%;
-      height: 12rem;
-      -webkit-clip-path: var(--clip);
-      clip-path: var(--clip);
-      background-color: var(--text);
-      z-index: 2;
-    }
+  &:first-of-type {
+    margin-top: 100vh;
   }
-}
 
-.section--about {
-  @media (min-width: $lg) {
-    margin-top: calc(100vh + 6rem);
-  }
-}
+  &::before {
+    --clip: polygon(0 0, 100% 0, 0 100%);
 
-.section--about,
-.section--projects {
-  @media (min-width: $lg) {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 7vmin;
+    background: repeating-linear-gradient(
+      45deg,
+      deeppink,
+      deeppink 0.1rem,
+      transparent 0.1rem,
+      transparent 0.5rem
+    );
     -webkit-clip-path: var(--clip);
     clip-path: var(--clip);
+  }
+
+  &.is-inview {
+    &::before {
+      position: fixed;
+    }
   }
 }
 
@@ -66,7 +54,7 @@
       width: 100%;
       height: 12rem;
       clip-path: polygon(0 0, 100% 50%, 0 100%);
-      background-color: var(--accent);
+      background-color: deeppink;
       z-index: 2;
     }
   }
@@ -106,7 +94,7 @@
     position: absolute;
     bottom: -0.75em;
     left: 0;
-    stroke: var(--accent);
+    stroke: deeppink;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     transition: stroke-dashoffset 2000ms 500ms;
@@ -125,85 +113,6 @@
     opacity: 0;
     transform: translate3d(0, 0.5em, 0);
     transition: opacity 500ms, transform 500ms;
-  }
-}
-
-.c-section__shape {
-  --size: min(26rem, 30vw);
-
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at center,
-    var(--accent) 0.1rem,
-    transparent 0
-  );
-  background-size: 0.5rem 0.5rem;
-  position: absolute;
-  opacity: 0.5;
-
-  &:first-child {
-    top: calc(var(--size) / -4);
-    right: calc(var(--size) / -4);
-    transform: rotate(45deg);
-  }
-
-  &:nth-child(2) {
-    --size: min(15rem, 15vw);
-
-    bottom: calc(var(--size) / -4);
-    left: calc(var(--size) / -6);
-    transform: rotate(25deg);
-  }
-}
-
-.section--speaking {
-  .c-section__shape {
-    border-radius: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      var(--accent),
-      var(--accent) 0.1rem,
-      transparent 0,
-      transparent 0.5rem
-    );
-
-    &:first-child {
-      top: 60vh;
-    }
-
-    &:nth-child(2) {
-      left: calc(var(--size) / -2);
-      top: calc(var(--size) / -2);
-    }
-  }
-}
-
-.section--projects {
-  .c-section__shape {
-    --clip: polygon(50% 0, 75% 50%, 50% 100%, 25% 50%);
-
-    background: repeating-linear-gradient(
-        0deg,
-        var(--accent),
-        var(--accent) 0.1rem,
-        transparent 0,
-        transparent 0.6rem
-      ),
-      repeating-linear-gradient(
-        90deg,
-        var(--accent),
-        var(--accent) 0.1rem,
-        transparent 0,
-        transparent 0.6rem
-      );
-    -webkit-clip-path: var(--clip);
-    clip-path: var(--clip);
-
-    &:first-child {
-      transform: rotate(60deg);
-    }
   }
 }
 
