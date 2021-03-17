@@ -25,7 +25,7 @@
   text-decoration: underline;
   font-family: inherit;
   margin-left: auto;
-  padding: 1rem;
+  padding: 0.75rem;
   font-size: 1rem;
   z-index: 2;
   cursor: pointer;
@@ -53,6 +53,7 @@
   width: 1.6rem;
   height: 1.6rem;
   display: block;
+  top: 2px;
 
   > span,
   &::before,
@@ -105,6 +106,7 @@
   height: 100%;
   text-decoration: underline;
   text-decoration-color: transparent;
+  text-decoration-thickness: 0.1em;
   text-underline-offset: 0.2em;
   transition: text-decoration-color 600ms;
 
@@ -116,7 +118,7 @@
 
   &:hover,
   &:focus {
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--bg);
     animation: bounce 1000ms forwards;
 
     @media (prefers-reduced-motion: reduce) {
@@ -185,11 +187,13 @@
     height: 100vh;
     padding: 5rem 1rem 2rem 1rem;
     overflow-y: scroll;
-    background-color: var(--bg);
-    transform: translate3d(0, 100%, 0);
-    transition: transform 400ms;
+    // background-color: var(--bg);
+    background-color: var(--accent);
+    clip-path: circle(0% at calc(100% - 2rem) 2rem);
+    transition: opacity 200ms, clip-path 500ms;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
+    pointer-events: none;
 
     @media (min-width: $md) {
       padding: 5rem 2rem 2rem 2rem;
@@ -217,8 +221,9 @@
 
 .is-visible {
   .c-header__nav {
-    transform: translate3d(0, 0, 0);
     opacity: 1;
+    clip-path: circle(200% at calc(100% - 2rem) 2rem);
+    pointer-events: all;
   }
 }
 

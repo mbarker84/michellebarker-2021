@@ -21,11 +21,13 @@
   {% for post in collections.section %}
     {% if post.fileSlug == 'about' %}
       {% include "./partials/section-about.njk" %}
+    {% elseif post.fileSlug == 'contact' %}
+      {% include "./partials/section-contact.njk" %}
     {% else %}
       <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
-        <div class="c-section__content" data-section-content id="{{ post.fileSlug }}">
+        <div class="c-section__content" data-section-content >
           <div class="container">
-            <h2 class="c-section__heading" data-heading="{{ loop.index }}">
+            <h2 class="c-section__heading" data-heading="{{ loop.index }}" id="{{ post.fileSlug }}">
               {{ post.data.pageTitle }}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="5" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
             </h2>
@@ -33,12 +35,6 @@
               {{ post.data.content | safe }}
             </div>
           </div>
-
-          {% if post.fileSlug == 'projects' %}
-            <div data-projects-wrapper>
-              {% include "./partials/projects.njk" %}
-            </div>
-          {% endif %}
 
           <div>
             <div class="c-section__shape" data-shape></div>
@@ -48,26 +44,5 @@
       </section>
     {% endif %}
   {% endfor %}
-
-  <div class="c-divider"></div>
-
-  <section class="section section--contact" data-section>
-    <div class="c-section__content" data-section-content>
-      <div class="container">
-        <h2 class="c-section__heading" data-heading>Get in touch</h2>
-        <div class="c-section__inner-content o-richtext" data-content>
-          <p>Find me in these places:</p>
-          <ul>
-            {% for link in links %}
-              <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-          <p>Or email me at <a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
 
 {% endblock %}

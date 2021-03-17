@@ -1,7 +1,7 @@
 import Splitting from 'splitting'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { minDesktop } from './helpers/media'
+import { minDesktop, minTablet } from './helpers/media'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,9 +29,11 @@ const initializeSectionsTL = () => {
       scale: 0,
     })
 
-    gsap.set(section, {
-      minHeight: window.innerHeight * 1.25,
-    })
+    if (minTablet()) {
+      gsap.set(section, {
+        minHeight: window.innerHeight * 1.25,
+      })
+    }
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -103,34 +105,16 @@ const initializeContentTL = () => {
   sectionContentAreas.forEach((el, index) => {
     const parentSection = el.closest('.c-section__content')
     const top = getComputedStyle(parentSection).paddingTop
-    const tl = gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: el,
-          start: `top ${top}`,
-          endTrigger: sections[index + 1] ? sections[index + 1] : null,
-          pin: minDesktop(),
-          toggleActions: 'play pause resume reverse',
-          toggleClass: 'should-show-text',
-        },
-      })
-      .to(aboutImgWrapper, {
-        rotation: 5,
-        duration: 2,
-      })
-      .to(aboutImgWrapper, {
-        rotation: -2,
-        duration: 2,
-      })
-      .to(
-        aboutImgWrapper,
-        {
-          y: 200,
-          duration: 6,
-          ease: 'elastic.out(1, 0.3)',
-        },
-        0
-      )
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        start: `top ${top}`,
+        endTrigger: sections[index + 1] ? sections[index + 1] : null,
+        pin: minDesktop(),
+        toggleActions: 'play pause resume reverse',
+        toggleClass: 'should-show-text',
+      },
+    })
   })
 }
 

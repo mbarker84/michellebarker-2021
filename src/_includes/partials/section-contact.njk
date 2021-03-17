@@ -1,0 +1,20 @@
+<div class="c-divider"></div>
+
+<section class="section section--contact" data-section>
+  <div class="c-section__content" data-section-content>
+    <div class="container">
+      <h2 class="c-section__heading" data-heading id="contact">Get in touch</h2>
+      <div class="c-section__inner-content o-richtext" data-content>
+        <p>Find me in these places:</p>
+        <ul>
+          {% for link in links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <p>Or email me at <a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
+      </div>
+    </div>
+  </div>
+</section>
