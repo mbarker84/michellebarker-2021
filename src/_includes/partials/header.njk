@@ -22,7 +22,7 @@
 
         {% for post in collections.sortedSections %}
           <li class="c-header__item">
-            <a class="c-header__link" href="#{{ post.fileSlug }}">{{ post.data.pageTitle }}</a>
+            <a class="c-header__link" href="#{{ post.fileSlug }}" data-menu-link>{{ post.data.pageTitle }}</a>
           </li>
         {% endfor %}
 

@@ -7,13 +7,29 @@ gsap.registerPlugin(ScrollTrigger)
 
 const sections = [...document.querySelectorAll('[data-section')]
 const hero = document.querySelectorAll('[data-hero]')
-const projectsWrapper = document.querySelector('[data-projects-wrapper]')
-const containerWidth = document.querySelector('.container').clientWidth
 const sectionContentAreas = [
   ...document.querySelectorAll('[data-section-content'),
 ].map((el) => el.children[0])
+const menuLinks = [...document.querySelectorAll('[data-menu-link]')]
 
 const initializeSectionsTL = () => {
+  /* Page */
+  gsap.set(sections, {
+    backgroundColor: 'rgba(255, 20, 147, 1)',
+  })
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: sections[0],
+        start: 'top top',
+        toggleActions: 'play pause resume reverse',
+      },
+    })
+    .to(sections, {
+      backgroundColor: 'rgba(9, 14, 23, 1)',
+    })
+
   /* Sections */
   sections.forEach((section, index) => {
     const nextSection = sections[index + 1]
@@ -24,19 +40,7 @@ const initializeSectionsTL = () => {
       target: heading,
     })
 
-    if (minTablet()) {
-      gsap.set(section, {
-        minHeight: window.innerHeight * 1.25,
-      })
-    }
-
-    if (index === 0) {
-      gsap.set(section, {
-        backgroundColor: 'rgba(255, 20, 147, 1)',
-      })
-    }
-
-    const tl = gsap.timeline({
+    gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
@@ -60,33 +64,6 @@ const initializeSectionsTL = () => {
         },
       },
     })
-
-    if (index === 0) {
-      tl.to(section, {
-        backgroundColor: 'rgba(9, 14, 23, 1)',
-        duration: 0.4,
-      })
-    }
-    // tl.to(section, {
-    //   backgroundColor: getComputedStyle(document.body).getPropertyValue('--bg'),
-    //   duration: 1.2,
-    // })
-
-    // tl.to(
-    //   shapes[0],
-    //   {
-    //     scale: 1,
-    //     rotate: 10,
-    //     duration: 0.7,
-    //     ease: 'back.out(2)',
-    //   },
-    //   '+=1.5'
-    // ).to(shapes[1], {
-    //   scale: 1,
-    //   rotate: -10,
-    //   duration: 0.7,
-    //   ease: 'back.out(2)',
-    // })
   })
 }
 
@@ -96,35 +73,49 @@ const initializeContentTL = () => {
 
   if (minDesktop()) {
     gsap.set(aboutImgWrapper, {
-      y: 600,
-      rotation: -5,
+      opacity: 0,
+      rotate: 60,
+      scale: 0,
     })
   }
 
   /* Text content */
   sectionContentAreas.forEach((el, index) => {
     const parentSection = el.closest('.c-section__content')
-    const top = getComputedStyle(parentSection).paddingTop
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start: `top ${top}`,
-        endTrigger: sections[index + 1] ? sections[index + 1] : null,
-        pin: minDesktop(),
-        toggleActions: 'play pause resume reverse',
-        toggleClass: 'should-show-text',
-      },
-    })
+    const top =
+      index === 0 ? getComputedStyle(parentSection).paddingTop : 'center'
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: `top ${top}`,
+          endTrigger: sections[index + 1] ? sections[index + 1] : null,
+          toggleActions: 'play pause resume reverse',
+          toggleClass: 'should-show-text',
+        },
+      })
+      .to(aboutImgWrapper, {
+        opacity: 1,
+        rotate: -5,
+        scale: 1,
+        duration: 1.8,
+        delay: 1.2,
+        ease: 'elastic.out(1, 0.4)',
+      })
   })
 }
 
 const scroll = () => {
-  gsap.set(projectsWrapper, {
-    x: window.innerWidth / 2 - containerWidth / 2,
-  })
-
   initializeSectionsTL()
   initializeContentTL()
+
+  menuLinks.forEach((el) => {
+    el.addEventListener('click', () => {
+      gsap.to(sections, {
+        backgroundColor: 'rgba(9, 14, 23, 1)',
+      })
+    })
+  })
 }
 
 export default scroll

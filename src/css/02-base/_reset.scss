@@ -29,6 +29,10 @@ figure {
   margin: 0;
 }
 
+ul:not([class]) {
+  list-style: none;
+}
+
 *:focus,
 button:focus {
   outline: none;

@@ -18,26 +18,27 @@
     </div>
   </div>
 
-  {% for post in collections.sortedSections %}
-    {% if post.fileSlug == 'about' %}
-      {% include "./partials/section-about.njk" %}
-    {% elseif post.fileSlug == 'contact' %}
-      {% include "./partials/section-contact.njk" %}
-    {% else %}
-      <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
-        <div class="c-section__content" data-section-content>
-          <div class="container">
-            <h2 class="c-section__heading" data-heading="{{ loop.index }}" id="{{ post.fileSlug }}">
-              {{ post.data.pageTitle }}
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="5" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
-            </h2>
-            <div class="c-section__inner-content o-richtext" data-content>
-              {{ post.data.content | safe }}
+  <div class="page-content" data-page-content>
+    {% for post in collections.sortedSections %}
+      {% if post.fileSlug == 'about' %}
+        {% include "./partials/section-about.njk" %}
+      {% elseif post.fileSlug == 'contact' %}
+        {% include "./partials/section-contact.njk" %}
+      {% else %}
+        <section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}" id="{{ post.fileSlug }}">
+          <div class="c-section__content" data-section-content>
+            <div class="container">
+              <h2 class="c-section__heading" data-heading="{{ loop.index }}">
+                {{ post.data.pageTitle }}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 781.4 40.9"><path fill="none" stroke-miterlimit="10" stroke-width="5" pathLength="1" d="M.7 1.4l37.2 38L75 1.4l37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.1-38 37.2 38 37.1-38 37.2 38 37.1-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38 37.2-38 37.1 38"/></svg>
+              </h2>
+              <div class="c-section__inner-content o-richtext" data-content>
+                {{ post.data.content | safe }}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    {% endif %}
-  {% endfor %}
-
+        </section>
+      {% endif %}
+    {% endfor %}
+  </div>
 {% endblock %}

@@ -1,4 +1,4 @@
-<section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}">
+<section class="section section--{{ post.fileSlug }}" data-section="{{ post.fileSlug }}" id="{{ post.fileSlug }}">
 
   <div class="c-section__content">
     <div class="container">
@@ -6,7 +6,7 @@
         <div class="c-about__image-wrapper" data-img-wrapper>
           <img src="/headshot.jpg" alt="Michelle Barker profile picture" width="300" height="300">
         </div>
-        <div data-section-content id="{{ post.fileSlug }}">
+        <div data-section-content>
           <div>
             <h2 class="c-section__heading" data-heading="{{ loop.index }}">
               {{ post.data.pageTitle }}

@@ -25,6 +25,7 @@
 
 .c-hero__heading {
   color: var(--accent);
+  filter: drop-shadow(0 0 0.35rem var(--accent));
 
   .char {
     opacity: 0;
@@ -34,6 +35,7 @@
 
   @supports (-webkit-text-stroke-width: 1px) {
     color: var(--bg);
+    color: transparent;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: var(--accent);
   }
@@ -114,7 +116,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(deeppink, darkorchid), var(--text);
+  background: linear-gradient(45deg, turquoise, darkorchid, deeppink),
+    var(--text);
   color: var(--text);
   -webkit-mask-image: var(--mask);
   mask-image: var(--mask);
@@ -125,6 +128,7 @@
 
   .c-hero__heading {
     color: var(--text);
+    filter: none;
 
     @supports (-webkit-text-stroke-width: 1px) {
       -webkit-text-stroke-width: 0;
@@ -136,6 +140,7 @@
         var(--text) 0.11rem,
         transparent 0
       );
+      -webkit-background-clip: text;
       background-clip: text;
       background-size: 0.4rem 0.4rem;
       color: transparent;

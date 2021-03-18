@@ -1,19 +1,19 @@
 <div class="c-divider"></div>
 
-<section class="section section--contact" data-section>
+<section class="section section--contact" data-section id="contact">
   <div class="c-section__content" data-section-content>
     <div class="container">
-      <h2 class="c-section__heading" data-heading id="contact">{{ post.data.pageTitle }}</h2>
-      <div class="c-section__inner-content o-richtext" data-content>
-        {{ post.data.content | safe }}
-        <ul>
-          {% for link in links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <p>Or email me at <a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
+      <h2 class="c-section__heading" data-heading>{{ post.data.pageTitle }}</h2>
+      <div class="c-section__inner-content" data-content>
+        <div class="o-richtext">
+          {{ post.data.content | safe }}
+        </div>
+        <div class="c-section__social-list">
+          {% include "./social-icons.njk" %}
+        </div>
+        <div class="o-richtext">
+          <p>Or email me at <a href="mailto:{{ metadata.author.email }}">{{ metadata.author.email }}</a></p>
+        </div>
       </div>
     </div>
   </div>

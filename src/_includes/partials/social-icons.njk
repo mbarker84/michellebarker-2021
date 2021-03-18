@@ -1,0 +1,11 @@
+<ul class="c-social-icons">
+  {% for item in links %}
+    <li>
+      <a href="{{ item.url }}" aria-label="{{ item.title }}">
+        <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+          <use href="#{{ item.icon }}" />
+        </svg>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
