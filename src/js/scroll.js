@@ -12,11 +12,26 @@ const sectionContentAreas = [
 ].map((el) => el.children[0])
 const menuLinks = [...document.querySelectorAll('[data-menu-link]')]
 
-const initializeSectionsTL = () => {
+const initializePageTL = () => {
+  if (!minDesktop()) return
+
   /* Page */
-  gsap.set(sections, {
+  gsap.set('.page-content', {
     backgroundColor: 'rgba(255, 20, 147, 1)',
   })
+
+  gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: sections[0],
+        start: `top ${window.innerHeight * 0.8}`,
+        toggleActions: 'play pause resume reverse',
+      },
+    })
+    .to(hero, {
+      opacity: 0,
+      duration: 0.8,
+    })
 
   gsap
     .timeline({
@@ -26,10 +41,12 @@ const initializeSectionsTL = () => {
         toggleActions: 'play pause resume reverse',
       },
     })
-    .to(sections, {
+    .to('.page-content', {
       backgroundColor: 'rgba(9, 14, 23, 1)',
     })
+}
 
+const initializeSectionsTL = () => {
   /* Sections */
   sections.forEach((section, index) => {
     const nextSection = sections[index + 1]
@@ -50,17 +67,9 @@ const initializeSectionsTL = () => {
         toggleClass: 'is-inview',
         onEnter: (self) => {
           self.trigger.classList.add('is-inview')
-
-          if (index == 0) {
-            gsap.to(hero, { opacity: 0, duration: 0.8 })
-          }
         },
         onLeaveBack: (self) => {
           self.trigger.classList.remove('is-inview')
-
-          if (index == 0) {
-            gsap.to(hero, { opacity: 1, duration: 0.8 })
-          }
         },
       },
     })
@@ -83,7 +92,9 @@ const initializeContentTL = () => {
   sectionContentAreas.forEach((el, index) => {
     const parentSection = el.closest('.c-section__content')
     const top =
-      index === 0 ? getComputedStyle(parentSection).paddingTop : 'center'
+      index === 0
+        ? getComputedStyle(parentSection).paddingTop
+        : `${window.innerHeight * 0.65}px`
     gsap
       .timeline({
         scrollTrigger: {
@@ -98,9 +109,9 @@ const initializeContentTL = () => {
         opacity: 1,
         rotate: -5,
         scale: 1,
-        duration: 1.8,
+        duration: 0.8,
         delay: 1.2,
-        ease: 'elastic.out(1, 0.4)',
+        ease: 'back.out(1.7)',
       })
   })
 }
@@ -108,6 +119,7 @@ const initializeContentTL = () => {
 const scroll = () => {
   initializeSectionsTL()
   initializeContentTL()
+  initializePageTL()
 
   menuLinks.forEach((el) => {
     el.addEventListener('click', () => {

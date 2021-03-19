@@ -44,10 +44,12 @@
     text-decoration-color: var(--accent);
     text-decoration-thickness: 0.1em;
     font-weight: 700;
+    transition: text-underline-offset 200ms, color 200ms;
 
     &:hover,
     &:focus {
-      text-decoration-style: dashed;
+      color: deeppink;
+      text-underline-offset: 0.55em;
     }
   }
 }

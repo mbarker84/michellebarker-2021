@@ -23,6 +23,15 @@ body {
 }
 
 .page-content {
-  padding: 6rem 0 0 0;
-  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+
+  @media (min-width: $lg) {
+    --clip: polygon(100% 0, 100% 100%, 0 100%, 0 7vmin);
+    scroll-margin-top: -1rem;
+    -webkit-clip-path: var(--clip);
+    clip-path: var(--clip);
+    margin-top: 100vh;
+    padding: 6rem 0 0 0;
+  }
 }

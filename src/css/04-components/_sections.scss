@@ -3,21 +3,20 @@
   z-index: 1;
   overflow: hidden;
   color: var(--text);
-  background-color: var(--bg);
 
   &:first-of-type {
-    --clip: polygon(100% 0, 100% 100%, 0 100%, 0 7vmin);
-    margin-top: 100vh;
     scroll-margin-top: -1rem;
-    -webkit-clip-path: var(--clip);
-    clip-path: var(--clip);
+
+    .c-section__content {
+      padding: 6rem 0 0;
+
+      @media (min-width: $md) {
+        padding: 16rem 0 4rem;
+      }
+    }
 
     @media (min-width: $lg) {
       scroll-margin-top: -3rem;
-
-      .c-section__content {
-        padding: 14rem 0 10rem 0;
-      }
     }
 
     &::before {
@@ -38,6 +37,7 @@
       );
       -webkit-clip-path: var(--clip);
       clip-path: var(--clip);
+      z-index: 1;
     }
 
     &.is-inview {
@@ -50,8 +50,9 @@
 
 .section--speaking {
   @media (min-width: $lg) {
+    scroll-margin-top: 10rem;
+
     .c-section__content {
-      scroll-margin-top: 10rem;
       padding: 0 0 16rem;
     }
   }
@@ -101,6 +102,7 @@
 .c-section__heading {
   position: relative;
   display: inline-block;
+  margin-bottom: var(--2vr);
 
   .char {
     @media (min-width: $md) and (prefers-reduced-motion: no-preference) {
@@ -115,7 +117,7 @@
 
   svg {
     width: auto;
-    height: 1rem;
+    height: 0.5rem;
     position: absolute;
     bottom: -0.75em;
     left: 0;
@@ -123,10 +125,10 @@
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
     transition: stroke-dashoffset 2000ms 500ms;
-  }
 
-  @media (min-width: $md) {
-    margin-bottom: var(--2vr);
+    @media (min-width: $md) {
+      height: 1rem;
+    }
   }
 }
 

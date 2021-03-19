@@ -5,3 +5,7 @@ export const minDesktop = () => {
 export const minTablet = () => {
   return window.matchMedia('(min-width: 720px)').matches
 }
+
+export const isHover = () => {
+  return window.matchMedia('(hover: hover)').matches
+}

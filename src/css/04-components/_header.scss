@@ -17,8 +17,8 @@
 
 .c-header__menu-btn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0.5rem;
+  right: 0.5rem;
   appearance: none;
   border: none;
   background-color: transparent;
@@ -38,12 +38,11 @@
 
   &:hover,
   &:focus {
-    color: var(--accent);
+    color: deeppink;
   }
 
   @media (min-width: $md) {
     right: 1.5rem;
-    top: 0.5rem;
     font-size: 1.2rem;
   }
 }
@@ -108,7 +107,7 @@
   text-decoration-color: transparent;
   text-decoration-thickness: 0.1em;
   text-underline-offset: 0.2em;
-  transition: text-decoration-color 600ms;
+  transition: text-decoration-color 300ms ease-out;
 
   svg {
     margin-left: 0.5rem;
@@ -119,12 +118,6 @@
   &:hover,
   &:focus {
     text-decoration-color: var(--bg);
-    animation: bounce 1000ms forwards;
-
-    @media (prefers-reduced-motion: reduce) {
-      animation: none;
-      text-underline-offset: 0.2em;
-    }
   }
 
   @media (min-width: $md) {
@@ -136,24 +129,6 @@
   }
 }
 
-@keyframes bounce {
-  30% {
-    text-underline-offset: 0.35em;
-  }
-
-  50% {
-    text-underline-offset: 0.15em;
-  }
-
-  70% {
-    text-underline-offset: 0.31em;
-  }
-
-  100% {
-    text-underline-offset: 0.2em;
-  }
-}
-
 .c-header__title {
   font-family: 'Amiri', serif;
   font-size: 1.4rem;
@@ -162,12 +137,12 @@
 
   a {
     display: block;
-    color: $accent;
+    color: var(--accent);
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: $white;
+      color: var(--text);
     }
   }
 
@@ -187,7 +162,7 @@
     height: 100vh;
     padding: 5rem 1rem 2rem 1rem;
     overflow-y: scroll;
-    background-color: deeppink;
+    background: linear-gradient(45deg, darkorchid, deeppink, orange);
     clip-path: circle(0% at calc(100% - 2rem) 2rem);
     transition: opacity 200ms, clip-path 500ms;
     font-family: 'Montserrat', sans-serif;

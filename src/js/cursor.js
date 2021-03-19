@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import throttle from 'lodash.throttle'
+import { isHover, minTablet } from './helpers/media'
 
 const hero = document.querySelector('[data-hero]')
 
@@ -17,16 +18,23 @@ const throttledMouseMove = throttle((e) => {
 })
 
 const cursor = () => {
-  window.addEventListener('mousemove', throttledMouseMove, 100)
+  if (!isHover()) return
+
+  if (minTablet()) {
+    window.addEventListener('mousemove', throttledMouseMove, 100)
+  }
+
+  const x = `${minTablet() ? '50%' : '100%'}`
+  const y = `${minTablet() ? '50%' : '60%'}`
 
   gsap.to(hero, {
-    '--cursorX': `${50}%`,
-    '--cursorY': `${50}%`,
+    '--cursorX': x,
+    '--cursorY': y,
     duration: 0,
   })
 
   gsap.to(hero, {
-    '--maskSize': '20%',
+    '--maskSize': `${minTablet() ? '20%' : '35%'}`,
     duration: 0.5,
     ease: 'back.out(2)',
   })
