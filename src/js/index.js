@@ -5,6 +5,7 @@ import textAnimation from './textAnimation'
 document.onreadystatechange = function () {
   if (document.readyState === 'complete') {
     document.body.classList.add('is-complete')
+    document.body.classList.remove('is-loading')
   }
 }
 

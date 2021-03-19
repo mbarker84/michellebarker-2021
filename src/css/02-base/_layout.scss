@@ -35,3 +35,11 @@ body {
     padding: 6rem 0 0 0;
   }
 }
+
+.is-loading {
+  header,
+  main {
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+}

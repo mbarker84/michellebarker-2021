@@ -3,6 +3,11 @@
   {% include "./partials/siteHead.njk" %}
 
   <body class="no-js">
+    {# Hide body so we can transition in with JS #}
+    <script>
+      document.body.classList.add('is-loading');
+      document.body.classList.remove('no-js');
+    </script>
     <div class="hidden">
       {% include './partials/sprite.svg' %}
     </div>
@@ -26,9 +31,6 @@
     {% else %}
       {% set JsVersion = version.js %}
     {% endif %}
-    <script>
-      document.body.classList.remove('no-js')
-    </script>
     <script src="/index{{ JsVersion }}.js"></script>
   </body>
 </html>
