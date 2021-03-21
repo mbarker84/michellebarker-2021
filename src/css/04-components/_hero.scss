@@ -98,29 +98,26 @@
 .c-hero__wrapper--cover {
   --circleX: var(--cursorX, 50%);
   --circleY: var(--cursorY, 50%);
+  --grad: circle at var(--circleX, 50%) var(--circleY, 50%),
+    black var(--maskSize, 0%), transparent 0, transparent var(--maskSize2, 0%),
+    black var(--maskSize2, 0%), black var(--maskSize3, 0%), transparent 0;
 
   @media (prefers-reduced-motion: reduce) {
     --circleX: 50%;
     --circleY: 50%;
   }
 
-  --mask: radial-gradient(
-    circle at var(--circleX, 50%) var(--circleY, 50%),
-    black var(--maskSize, 0%),
-    transparent 0,
-    transparent var(--maskSize2, 0%),
-    black var(--maskSize2, 0%),
-    black var(--maskSize3, 0%),
-    transparent 0
-  );
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   pointer-events: none;
   background: linear-gradient(45deg, turquoise, darkorchid, deeppink, orange),
     var(--text);
   color: var(--text);
-  -webkit-mask-image: var(--mask);
-  mask-image: var(--mask);
+  -webkit-mask-image: radial-gradient(var(--grad));
+  mask-image: radial-gradient(var(--grad));
 
   .c-hero__desc {
     opacity: 1;

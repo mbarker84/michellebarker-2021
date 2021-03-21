@@ -25,7 +25,7 @@ const initializePageTL = () => {
       scrollTrigger: {
         trigger: sections[0],
         start: `top ${window.innerHeight * 0.8}`,
-        toggleActions: 'play pause resume reverse',
+        toggleActions: 'play none none reverse',
       },
     })
     .to(hero, {
