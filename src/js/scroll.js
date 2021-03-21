@@ -61,16 +61,6 @@ const initializeSectionsTL = () => {
     const splitText = new Splitting({
       target: heading,
     })
-
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        endTrigger: nextSection || false,
-        toggleActions: 'play pause resume reverse',
-        toggleClass: 'is-inview',
-      },
-    })
   })
 }
 
@@ -79,6 +69,10 @@ const initializeContentTL = () => {
   const aboutImgWrapper = aboutSection.querySelector('[data-img-wrapper]')
 
   if (minDesktop()) {
+    gsap.set(aboutSection, {
+      marginTop: '50vh',
+    })
+
     gsap.set(aboutImgWrapper, {
       opacity: 0,
       rotate: 60,
@@ -93,11 +87,12 @@ const initializeContentTL = () => {
       index === 0
         ? getComputedStyle(parentSection).paddingTop
         : `${window.innerHeight * 0.65}px`
+
     gsap
       .timeline({
         scrollTrigger: {
           trigger: el,
-          start: `top ${top}`,
+          start: `top ${window.innerHeight * 0.65}`,
           endTrigger: sections[index + 1] ? sections[index + 1] : null,
           toggleActions: 'play pause resume reverse',
           toggleClass: 'should-show-text',
@@ -107,7 +102,7 @@ const initializeContentTL = () => {
         opacity: 1,
         rotate: -5,
         scale: 1,
-        duration: 0.8,
+        duration: 0.5,
         delay: 1.2,
         ease: 'back.out(1.7)',
       })

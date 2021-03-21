@@ -65,3 +65,7 @@ figcaption {
     font-size: 1.2rem;
   }
 }
+
+li::marker {
+  color: var(--accent);
+}
