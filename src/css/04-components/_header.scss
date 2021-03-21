@@ -65,6 +65,7 @@
     top: calc(50% - 4px);
     transition: opacity 95ms;
     transform-origin: center;
+    pointer-events: none;
   }
 
   &::before,
