@@ -38,10 +38,30 @@ body {
       opacity: 1;
     }
   }
+
+  &.is-loading {
+    header,
+    main {
+      opacity: 0;
+      transition: opacity 400ms;
+    }
+  }
+}
+
+.is-loaded-complete {
+  header,
+  main {
+    opacity: 1;
+    transition: opacity 100ms;
+  }
 }
 
 * {
   scroll-behavior: smooth;
+
+  @supports (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 .container {
