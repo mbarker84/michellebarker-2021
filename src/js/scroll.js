@@ -23,7 +23,7 @@ const initializePageTL = () => {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: sections[0],
+        trigger: '.page-content',
         start: `top ${window.innerHeight * 0.8}`,
         toggleActions: 'play none none reverse',
       },
@@ -36,9 +36,15 @@ const initializePageTL = () => {
   gsap
     .timeline({
       scrollTrigger: {
-        trigger: sections[0],
+        trigger: '.page-content',
         start: 'top top',
         toggleActions: 'play pause resume reverse',
+        onEnter: () => {
+          document.body.classList.add('is-scrolled')
+        },
+        onLeaveBack: () => {
+          document.body.classList.remove('is-scrolled')
+        },
       },
     })
     .to('.page-content', {
@@ -51,7 +57,6 @@ const initializeSectionsTL = () => {
   sections.forEach((section, index) => {
     const nextSection = sections[index + 1]
     const heading = section.querySelector('[data-heading]')
-    const isProjectSection = section.dataset.section === 'projects'
 
     const splitText = new Splitting({
       target: heading,
@@ -60,17 +65,10 @@ const initializeSectionsTL = () => {
     gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'top top',
+        start: 'top bottom',
         endTrigger: nextSection || false,
-        pin: false,
         toggleActions: 'play pause resume reverse',
         toggleClass: 'is-inview',
-        onEnter: (self) => {
-          self.trigger.classList.add('is-inview')
-        },
-        onLeaveBack: (self) => {
-          self.trigger.classList.remove('is-inview')
-        },
       },
     })
   })
