@@ -1,3 +1,9 @@
+@property --offset {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 3px;
+}
+
 .o-richtext {
   * + * {
     margin-top: var(--vr);
@@ -40,16 +46,25 @@
   }
 
   a {
-    text-underline-offset: 0.25em;
+    text-underline-offset: var(--offset, 0.25em);
     text-decoration-color: var(--accent);
     text-decoration-thickness: 0.1em;
     font-weight: 700;
-    transition: text-underline-offset 200ms, color 200ms;
+    transition: --offset 200ms, color 200ms;
 
     &:hover,
     &:focus {
+      --offset: 0.55em;
       color: deeppink;
-      text-underline-offset: 0.55em;
+    }
+
+    @supports not (background: paint(something)) {
+      transition: text-underline-offset 200ms, color 200ms;
+
+      &:hover,
+      &:focus {
+        text-underline-offset: 0.55em;
+      }
     }
   }
 }
