@@ -58,6 +58,7 @@ typings/
 .env
 
 .cache/
+src/.*
 public
 yarn-error.log
 dist
