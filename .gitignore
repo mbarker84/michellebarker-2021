@@ -58,6 +58,7 @@ typings/
 .env
 
 .cache/
+.parcel-cache/
 src/.*
 public
 yarn-error.log
