@@ -63,3 +63,4 @@ src/.*
 public
 yarn-error.log
 dist
+.DS_Store
