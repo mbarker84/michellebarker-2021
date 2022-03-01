@@ -16,4 +16,5 @@ module.exports = {
   injectChanges: true,
   server: 'dist',
   throttle: 3000,
+  port: 1234,
 }
