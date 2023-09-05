@@ -9,6 +9,7 @@
 
   a {
     transition: color 200ms;
+    color: var(--bg);
 
     &:hover,
     &:focus {

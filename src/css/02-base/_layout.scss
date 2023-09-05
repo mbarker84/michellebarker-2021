@@ -7,42 +7,11 @@ body {
   width: 100%;
 
   @media (min-width: $lg) {
-    &::before {
-      --clip: polygon(0 0, 100% 0, 0 100%);
-
-      content: '';
-      display: block;
-      top: 0;
-      left: 0;
-      position: fixed;
-      width: 100%;
-      height: 7vmin;
-      background: repeating-linear-gradient(
-        45deg,
-        deeppink,
-        deeppink 0.1rem,
-        transparent 0.1rem,
-        transparent 0.5rem
-      );
-      -webkit-clip-path: var(--clip);
-      clip-path: var(--clip);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 2;
-      transition: opacity 400ms;
-    }
-  }
-
-  &.is-scrolled {
-    &::before {
-      opacity: 1;
-    }
-  }
-
-  &.is-loading {
-    header,
-    main {
-      opacity: 0;
+    &.is-loading {
+      header,
+      main {
+        opacity: 0;
+      }
     }
   }
 }
@@ -77,9 +46,11 @@ body {
 .page-content {
   position: relative;
   z-index: 1;
+  background: white;
 
   @media (min-width: $lg) {
     --clip: polygon(100% 0, 100% 100%, 0 100%, 0 7vmin);
+
     scroll-margin-top: -1rem;
     -webkit-clip-path: var(--clip);
     clip-path: var(--clip);

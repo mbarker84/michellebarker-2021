@@ -37,7 +37,7 @@
   transition: color 200ms, background-color 200ms;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     color: deeppink;
   }
 
@@ -118,7 +118,7 @@
 
   &:hover,
   &:focus {
-    text-decoration-color: var(--bg);
+    text-decoration-color: var(--text);
   }
 
   @media (min-width: $md) {
@@ -166,7 +166,7 @@
     background: linear-gradient(45deg, darkorchid, deeppink, orange);
     clip-path: circle(0% at calc(100% - 2rem) 2rem);
     transition: opacity 200ms, clip-path 500ms;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat Black', sans-serif;
     font-weight: 900;
     pointer-events: none;
 
