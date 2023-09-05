@@ -5,13 +5,18 @@
     "url": "https://github.com/mbarker84/eleventy-parcel"
   },
   {
-    "title": "Twitter",
-    "icon": "twitter",
-    "url": "https://twitter.com/MicheBarks"
-  },
-  {
     "title": "Codepen",
     "icon": "codepen",
     "url": "https://codepen.io/michellebarker"
+  },
+  {
+    "title": "Mastodon",
+    "icon": "mastodon",
+    "url": "https://front-end.social/@michelle"
+  },
+  {
+    "title": "LinkedIn",
+    "icon": "linkedin",
+    "url": "https://www.linkedin.com/in/michelle-barker-02819230/"
   }
 ]
