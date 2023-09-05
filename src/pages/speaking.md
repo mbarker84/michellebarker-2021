@@ -4,9 +4,11 @@ order: 2
 tags: ['post', 'section', 'speaking']
 ---
 
-I sometimes speak about front end development at web conferences and meetups. Previous topics include CSS Grid Layout and CSS custom properties. Some of the events I’ve spoken at:
+I sometimes speak about front end development at web conferences and meetups. Past topics include CSS layout and digital sustainability. Some of the events I’ve spoken at:
 
-- [Smashing Conf Live](https://smashingconf.com/live/)
+- [Smashing Conference](https://smashingconf.com/freiburg-2022)
+- [Beyond Tellerand](https://beyondtellerrand.com/events/dusseldorf-2023)
+- [All Day Hey](https://heypresents.com/conferences/2023)
 - [Generate CSS](https://www.generateconf.com/)
 - [Upfront Conference](http://2019.upfrontconf.com/)
 - [State of the Browser](https://2019.stateofthebrowser.com/)
