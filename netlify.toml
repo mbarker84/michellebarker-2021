@@ -9,7 +9,5 @@
     X-Frame-Options = "SAMEORIGIN"
     X-XSS-Protection = "1; mode=block"
     cache-control = '''
-    max-age=0,
-    no-cache,
-    no-store,
-    must-revalidate'''
+    max-age=60,
+    no-cache'''
